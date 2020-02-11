@@ -1,0 +1,25 @@
+{
+    "name": "bb7bd364/line-bot-php",
+    "description": "Simple line bot using slim framework",
+    "type": "project",
+    "require": {
+        "php": "^7.2",
+        "slim/slim": "^4.4",
+        "slim/psr7": "^1.0",
+        "nyholm/psr7": "^1.2",
+        "nyholm/psr7-server": "^0.4.1",
+        "guzzlehttp/psr7": "^1.6",
+        "http-interop/http-factory-guzzle": "^1.0",
+        "laminas/laminas-diactoros": "^2.2"
+    },
+    "require-dev": {
+        "linecorp/line-bot-sdk": "^4.2"
+    },
+    "authors": [
+        {
+            "name": "Abdul HP",
+            "email": "hpabdul902@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
