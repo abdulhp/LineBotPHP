@@ -31,3 +31,26 @@ $app->get('/', function (Request $request, Response $response, $args) {
 });
 
 //buat route untuk webhook
+$app-post('/webhook', function (Request $request, Response $response) use ($channel_secret, $bot, $httpClient, $pass_signature) {
+    //get request body and line signature header
+    $body = $request->getBody();
+    $signature = $request->getHeaderLine('HTTP_X_LINE_SIGNATURE');
+
+    //log body and signature
+    file_put_contents('php://stderr', 'Body: '.$body);
+
+    if($pass_signature === false) {
+        //is LINE_SIGNATURE exists in request header?
+        if(empty($signature)) {
+            return $response->withStatus(400, 'Signature not set');
+        }
+        
+        //is this request comes from Line?
+        if(!SignatureValidator::validateSignature($body, $channel_secret, $signature)) {
+            return $response->withStatus(400, 'Invald Signature');
+        }
+    }
+
+    //kode aplikasi nanti disini
+});
+$app->run();
